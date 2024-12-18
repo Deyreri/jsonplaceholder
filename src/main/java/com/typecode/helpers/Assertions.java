@@ -23,4 +23,9 @@ public class Assertions {
         response.body("title", equalTo(title))
                 .body("body", equalTo(body));
     }
+
+    @Step("Проверка: статус ответа Deleted")
+    public static void assertDeleted(ValidatableResponse response) {
+        response.statusCode(200);
+    }
 }

@@ -3,20 +3,31 @@ plugins {
     id 'io.qameta.allure' version '2.11.2'
 }
 
-
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    // JUnit и Allure
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
     testImplementation 'io.qameta.allure:allure-junit5:2.23.0'
     testImplementation 'io.qameta.allure:allure-rest-assured:2.23.0'
-    implementation 'io.qameta.allure:allure-java-commons:2.23.0' // Добавить эту зависимость
-    implementation 'io.rest-assured:rest-assured:5.3.0'
-    implementation 'org.slf4j:slf4j-simple:1.7.32'
-}
+    implementation 'io.qameta.allure:allure-java-commons:2.23.0'
 
+    // RestAssured
+    implementation 'io.rest-assured:rest-assured:5.3.0'
+
+    // SLF4J API и реализация Logback
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    implementation 'ch.qos.logback:logback-classic:1.4.7'
+
+    // Lombok
+    implementation 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    // Jackson для сериализации
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+}
 
 test {
     useJUnitPlatform()
@@ -28,6 +39,7 @@ tasks.withType(JavaCompile) {
 tasks.withType(Test) {
     systemProperty "file.encoding", "UTF-8"
 }
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)

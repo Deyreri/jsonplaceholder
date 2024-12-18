@@ -6,16 +6,17 @@ import io.qameta.allure.Step;
 
 import static io.restassured.RestAssured.given;
 
+import com.typecode.data.PostDto;
 import com.typecode.helpers.LoggerHelper;
 
 public class ApiSteps {
 
     @Step("Создание нового поста")
-    public static ValidatableResponse createPost(RequestSpecification spec, String body) {
+    public static ValidatableResponse createPost(RequestSpecification spec, PostDto post) {
         var response = given()
                 .spec(spec)
                 .header("Content-Type", "application/json")
-                .body(body)
+                .body(post)
                 .when()
                 .post("/posts")
                 .then()
@@ -39,11 +40,11 @@ public class ApiSteps {
     }
 
     @Step("Обновление поста с ID: {0}")
-    public static ValidatableResponse updatePost(RequestSpecification spec, int id, String body) {
+    public static ValidatableResponse updatePost(RequestSpecification spec, int id, PostDto post) {
         var response = given()
                 .spec(spec)
                 .header("Content-Type", "application/json")
-                .body(body)
+                .body(post)
                 .when()
                 .put("/posts/" + id)
                 .then()

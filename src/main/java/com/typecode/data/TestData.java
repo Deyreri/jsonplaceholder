@@ -1,20 +1,7 @@
 package com.typecode.data;
 
 public class TestData {
-    public static final String CREATE_POST_BODY = """
-            {
-                "title": "Test Title",
-                "body": "Test Body",
-                "userId": 1
-            }
-            """;
-
-    public static final String UPDATE_POST_BODY = """
-            {
-                "id": 1,
-                "title": "Updated Title",
-                "body": "Updated Body",
-                "userId": 1
-            }
-            """;
+    public static final PostDto CREATE_POST = new PostDto("Test Title", "Test Body", 1);
+    public static final PostDto UPDATE_POST = new PostDto("Updated Title", "Updated Body", 1);
+    public static final int POST_ID = 1;
 }
